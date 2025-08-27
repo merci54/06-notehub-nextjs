@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import css from "./NotesPage.module.css";
 import { fetchNotes } from "@/lib/api";
@@ -22,6 +22,7 @@ export default function NotesPages() {
     queryKey: ["notes", { page: page, query: debouncedQuery }],
     queryFn: () => fetchNotes(page, debouncedQuery),
     refetchOnMount: false,
+    placeholderData: keepPreviousData,
   });
 
   const handleSearch = (newQuery: string) => {

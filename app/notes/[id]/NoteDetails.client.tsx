@@ -9,8 +9,9 @@ import Link from "next/link";
 export default function NoteDetails() {
   const { id } = useParams<{ id: string }>();
   const { data } = useQuery({
-    queryKey: ["task", { id: id }],
+    queryKey: ["note", { id: id }],
     queryFn: () => fetchNoteById(id),
+    refetchOnMount: false,
   });
   return (
     <div className={css.container}>

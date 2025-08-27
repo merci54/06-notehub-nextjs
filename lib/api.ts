@@ -21,7 +21,7 @@ export const fetchNotes = async (page: number, query: string) => {
   return res.data;
 };
 
-export const deleteNote = async ({ id }: Pick<Note, "id">) => {
+export const deleteNote = async (id: Note["id"]) => {
   const res = await axios.delete<Note>(`/notes/${id}`);
   return res.data;
 };

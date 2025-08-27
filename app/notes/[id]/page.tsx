@@ -15,7 +15,7 @@ export default async function SingleNotePage({ params }: Props) {
   const { id } = await params;
 
   await queryClient.prefetchQuery({
-    queryKey: ["task", { id: "" }],
+    queryKey: ["note", { id: id }],
     queryFn: () => fetchNoteById(id),
   });
 
